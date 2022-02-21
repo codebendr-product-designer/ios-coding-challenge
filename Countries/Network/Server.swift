@@ -47,7 +47,7 @@ class Server {
     }
     
     private convenience init() {
-        self.init(host: "restcountries.com", path: "/v3.1/all")
+        self.init(host: "restcountries.com", path: "/v3.1/")
     }
 
     
