@@ -67,7 +67,7 @@ class Server {
     /// - returns: list of headers
     public func headers( extraHeaders: [String: String]? = nil ) -> [String: String] {
         
-        var headers: [String: String] = []
+        var headers: [String: String] = [:]
         
         if let extraHeaders = extraHeaders {
             headers += extraHeaders
