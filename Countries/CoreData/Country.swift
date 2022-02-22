@@ -26,13 +26,16 @@ public class Country: NSManagedObject, Mappable, Comparable {
         super.init(entity: Self.entity(), insertInto: nil)
     }
     
-    func mapping(map: Map) {
-        
-        DispatchQueue.main.async {
-            self.name <- map["name"]
-            self.capital <- map["capital"]
-            self.population <- map["population"]
+    public func mapping(map: Map) {
+        if let capital = map.JSON["capital"] as? [String] {
+            if let capital = capital.first {
+                self.capital = capital
+            }
         }
+        self.name <- map["name.common"]
+        self.population <- map["population"]
+        self.area <- map["area"]
+        self.region <- map["region"]
     }
     
 }
