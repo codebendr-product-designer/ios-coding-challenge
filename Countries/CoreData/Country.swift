@@ -12,8 +12,12 @@ import ObjectMapper
 
 
 @objc(Country)
-class Country: NSManagedObject, Mappable {
-        
+public class Country: NSManagedObject, Mappable, Comparable {
+    
+    public static func < (lhs: Country, rhs: Country) -> Bool {
+        lhs.region! < rhs.region!
+    }
+    
     private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }
