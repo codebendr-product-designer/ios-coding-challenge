@@ -15,7 +15,7 @@ import ObjectMapper
 public class Country: NSManagedObject, Mappable, Comparable {
     
     public static func < (lhs: Country, rhs: Country) -> Bool {
-        lhs.region! < rhs.region!
+        lhs.name! < rhs.name!
     }
     
     private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
