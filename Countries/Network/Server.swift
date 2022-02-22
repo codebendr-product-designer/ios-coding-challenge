@@ -47,7 +47,7 @@ class Server {
     }
     
     private convenience init() {
-        self.init(host: "restcountries.com", path: "/v3.1/")
+        self.init(host: "restcountries.com", path: "/v3.1")
     }
 
     
@@ -91,14 +91,14 @@ class Server {
                   path: String,
                   object: T.Type,
                   parameters: [String : Any]? = nil,
-                  completionHandler: @escaping ( _ response: [Mappable]?, _ error: Error? ) -> Void ) -> DataRequest {
+                  completionHandler: @escaping ( _ response: [Country]?, _ error: Error? ) -> Void ) -> DataRequest {
         
         return request(method,
                        path: path,
                        object: object,
                        parameters: parameters,
                        completionHandler: { (response: Any?, error: Error?) in
-            completionHandler( response as? [Mappable], error )
+            completionHandler( response as? [Country], error )
         })
     }
     
