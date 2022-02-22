@@ -27,7 +27,7 @@ class CountryTableViewCell: UITableViewCell {
         didSet {
             if let country = country {
                 capitalLabel.text = country.capital
-                populationLabel.text = "\(country.population.commas())"
+                populationLabel.text = "\(country.population.commas)"
                 areaLabel.text = "\(country.area)"
                 regionLabel.text = country.region
                 accessibility(with: country.name ?? "name")
