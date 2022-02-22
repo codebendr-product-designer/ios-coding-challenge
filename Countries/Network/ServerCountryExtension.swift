@@ -17,17 +17,17 @@ public enum CountryResult {
 
 extension Server {
     
-    func countryList(completionHandler: @escaping (_ error: Error?) -> Void ) {
+    func countryList(_ completion: @escaping (CountryResult) -> ()) {
         
-        Server.shared.request(.get, path: "all", object: Country.self) { (response: [Mappable]?, error) in
+        Server.shared.request(.get, path: "/all", object: Country.self) { (response: [Country]?, error) in
             
             guard error == nil else {
-                completionHandler(error)
+                completion(.failure(error))
                 return
             }
             
             DispatchQueue.main.async {
-                completionHandler(nil)
+                completion(.success(response))
             }
         }
     }
