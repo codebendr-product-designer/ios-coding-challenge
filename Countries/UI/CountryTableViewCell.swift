@@ -30,11 +30,16 @@ class CountryTableViewCell: UITableViewCell {
                 populationLabel.text = "\(country.population.commas())"
                 areaLabel.text = "\(country.area)"
                 regionLabel.text = country.region
-               // accessibility(with: country.name ?? "name")
+                accessibility(with: country.name ?? "name")
             }
         }
     }
     
-   
+    func accessibility(with name: String) {
+        accessibilityIdentifier = "\(name)-Cell"
+        countryLabel.accessibilityIdentifier = "Country"
+        capitalLabel.accessibilityIdentifier = "\(name)-Capital-Label"
+        populationLabel.accessibilityIdentifier = "\(name)-Population-Label"
+    }
     
 }
