@@ -18,6 +18,8 @@ extension Country {
 
     @NSManaged public var capital: String?
     @NSManaged public var name: String?
+    @NSManaged public var area: Int32
+    @NSManaged public var region: String?
     @NSManaged public var population: Int32
 
 }
