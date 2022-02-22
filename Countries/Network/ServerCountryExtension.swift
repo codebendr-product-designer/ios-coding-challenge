@@ -10,6 +10,10 @@ import Foundation
 import ObjectMapper
 import CoreData
 
+public enum CountryResult {
+    case success([Country]?)
+    case failure(Error?)
+}
 
 extension Server {
     
