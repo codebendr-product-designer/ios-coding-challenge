@@ -22,15 +22,7 @@ public class Country: NSManagedObject, Mappable, Comparable {
         super.init(entity: entity, insertInto: context)
     }
     
-    required init?(map: Map) {
-        
-        guard map.JSON["name"] != nil,
-            map.JSON["capital"] != nil,
-            map.JSON["population"] != nil else {
-                assertionFailure("Failed to create Country")
-                return nil
-        }
-        
+    required public init?(map: Map) {
         super.init(entity: Self.entity(), insertInto: nil)
     }
     
