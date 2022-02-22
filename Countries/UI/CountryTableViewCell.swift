@@ -22,6 +22,19 @@ class CountryTableViewCell: UITableViewCell {
         regionLabel.text = .none
         areaLabel.text = .none
     }
-
+    
+    var country: Country? {
+        didSet {
+            if let country = country {
+                capitalLabel.text = country.capital
+                populationLabel.text = "\(country.population.commas())"
+                areaLabel.text = "\(country.area)"
+                regionLabel.text = country.region
+               // accessibility(with: country.name ?? "name")
+            }
+        }
+    }
+    
+   
     
 }
