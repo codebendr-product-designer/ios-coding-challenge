@@ -29,15 +29,15 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
         super.viewDidAppear(animated)
         
         HUD.show(in: view.window!)
-        Server.shared.countryList() { (error) in
-            
-            HUD.dismiss(from: self.view.window!)
-            guard error == nil else {
-                assertionFailure("There was an error: \(error!)")
-                return
+        Server.shared.countryList { result in
+            switch result {
+            case let .success(countries):
+                self.countries = countries?.sorted(by: <)
+                HUD.dismiss(from: self.view.window!)
+                self.countryTableView.reloadData()
+            case let .failure(error):
+                assertionFailure("There was an error: \(String(describing: error))")
             }
-            
-            self.countryTableView.reloadData()
         }
     }
     
