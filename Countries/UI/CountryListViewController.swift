@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 
-
-class CountryListViewController: UIViewController, UITableViewDataSource {
+class CountryListViewController: UIViewController {
 
     @IBOutlet weak var countryTableView: UITableView!
     var countries: [Country]?
@@ -24,6 +23,10 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
         countryTableView.dataSource = self
         countryTableView.accessibilityIdentifier = "CountryTable"
     }
+
+}
+
+extension CountryListViewController: UITableViewDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -32,7 +35,7 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
         Server.shared.countryList { result in
             switch result {
             case let .success(countries):
-                self.countries = countries?.sorted(by: <)
+                self.countries = countries?.sorted(by: >)
                 HUD.dismiss(from: self.view.window!)
                 self.countryTableView.reloadData()
             case let .failure(error):
@@ -40,7 +43,6 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
             }
         }
     }
-    
     
     // MARK:- UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
