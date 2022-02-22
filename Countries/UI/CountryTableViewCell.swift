@@ -16,6 +16,12 @@ class CountryTableViewCell: UITableViewCell {
     @IBOutlet weak var regionLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
     
-  
+    override func prepareForReuse() {
+        capitalLabel.text = .none
+        populationLabel.text = .none
+        regionLabel.text = .none
+        areaLabel.text = .none
+    }
+
     
 }
